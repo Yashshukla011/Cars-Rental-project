@@ -1,0 +1,68 @@
+const cars = [
+  {
+    id: 1,
+    name: "BMW X5",
+    price: "₹52,00,000",
+    fuel: "Petrol",
+    year: 2022,
+    image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
+  },
+  {
+    id: 2,
+    name: "Audi A6",
+    price: "₹48,50,000",
+    fuel: "Diesel",
+    year: 2021,
+    image: "https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg",
+  },
+  {
+    id: 3,
+    name: "Mercedes-Benz C-Class",
+    price: "₹45,00,000",
+    fuel: "Petrol",
+    year: 2022,
+    image: "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg",
+  },
+  {
+    id: 4,
+    name: "Hyundai Creta",
+    price: "₹15,80,000",
+    fuel: "Petrol",
+    year: 2023,
+    image: "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg",
+  },
+  {
+    id: 5,
+    name: "Mahindra XUV700",
+    price: "₹23,50,000",
+    fuel: "Diesel",
+    year: 2023,
+    image: "https://images.pexels.com/photos/1592384/pexels-photo-1592384.jpeg",
+  },
+  {
+    id: 6,
+    name: "Tata Harrier",
+    price: "₹19,90,000",
+    fuel: "Diesel",
+    year: 2022,
+    image: "https://images.pexels.com/photos/1007410/pexels-photo-1007410.jpeg",
+  },
+  {
+    id: 7,
+    name: "Maruti Suzuki Baleno",
+    price: "₹8,90,000",
+    fuel: "Petrol",
+    year: 2023,
+    image: "https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg",
+  },
+  {
+    id: 8,
+    name: "Toyota Fortuner",
+    price: "₹38,50,000",
+    fuel: "Diesel",
+    year: 2021,
+    image: "https://images.pexels.com/photos/193021/pexels-photo-193021.jpeg",
+  },
+];
+
+export default cars;
