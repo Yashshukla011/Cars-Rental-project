@@ -55,7 +55,7 @@ const About = () => {
 
       {/* About Company */}
 
-      <section className="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center">
+      <section className="max-w-7xl mx-auto py-24 px-6 grid md:grid-cols-2 gap-12 items-center bg-white">
 
         <img
           src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=900"
@@ -65,11 +65,11 @@ const About = () => {
 
         <div>
 
-          <h2 className="text-4xl font-bold mb-6">
+          <h2 className="text-4xl font-bold mb-6 text-black">
             Who We Are
           </h2>
 
-          <p className="text-gray-300 leading-8 mb-6">
+          <p className="text-black leading-8 mb-6">
 
             Car Rental is an online platform that helps customers buy and
             sell certified used cars across India.
@@ -80,7 +80,7 @@ const About = () => {
 
           </p>
 
-          <p className="text-gray-300 leading-8">
+          <p className="text-black leading-8">
 
             Whether you're purchasing your first car or upgrading
             your current one, our mission is to make the process
@@ -94,7 +94,7 @@ const About = () => {
 
       {/* Mission & Vision */}
 
-      <section className="bg-gray-900 py-24">
+      <section className="bg-white py-24">
 
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 px-6">
 

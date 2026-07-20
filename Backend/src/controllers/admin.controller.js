@@ -4,7 +4,7 @@ import generateToken from "../utils/generateToken.js";
 
 export const registerAdmin = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password,role } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({
@@ -28,12 +28,13 @@ export const registerAdmin = async (req, res) => {
       name,
       email,
       password,
+        role,
     });
-
+console.log("Saved Admin:", admin);
     res.status(201).json({
       success: true,
       message: "Admin Registered Successfully",
-      admin,
+     admin,
     });
 
   } catch (error) {
@@ -48,7 +49,6 @@ export const registerAdmin = async (req, res) => {
 
 export const loginAdmin = async (req, res) => {
   try {
-
     const { email, password } = req.body;
 
     const admin = await Admin.findOne({ email });
@@ -69,23 +69,26 @@ export const loginAdmin = async (req, res) => {
       });
     }
 
-    const token = generateToken(admin._id);
+    // ✅ Pass complete admin object
+    const token = generateToken(admin);
 
     res.cookie("token", token, {
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.status(200).json({
-      success: true,
-      message: "Login Successful",
-      token,
-      admin: {
-        _id: admin._id,
-        name: admin.name,
-        email: admin.email,
-      },
-    });
+res.status(200).json({
+  success: true,
+  message: "Login Successful",
+  token,
+  role: admin.role,   // ✅ Add this line
+  admin: {
+    _id: admin._id,
+    name: admin.name,
+    email: admin.email,
+    role: admin.role,
+  },
+});
 
   } catch (error) {
     res.status(500).json({
