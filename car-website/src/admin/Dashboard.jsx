@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import API from "../api/axios";
 import { FaCar, FaChartLine, FaMoneyBill } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
-
+import { FaEnvelope } from "react-icons/fa";
 const Dashboard = () => {
 
   const [cars, setCars] = useState([]);
@@ -218,7 +218,47 @@ className="bg-orange-600 text-white px-6 py-3 rounded-lg hover:bg-orange-700"
 >
 Sell Requests
 </Link>
+<Link
+to="/admin/inquiries"
+className="
+bg-white
+shadow-lg
+rounded-xl
+p-6
+hover:shadow-2xl
+transition
+flex
+items-center
+gap-4
+"
+>
 
+<div className="
+bg-blue-600
+text-white
+p-4
+rounded-full
+">
+
+<FaEnvelope className="text-2xl"/>
+
+</div>
+
+
+<div>
+
+<h2 className="text-xl font-bold">
+Customer Inquiries
+</h2>
+
+<p className="text-gray-500">
+View customer requests
+</p>
+
+</div>
+
+
+</Link>
 
 </div>
 

@@ -9,19 +9,43 @@ import {
   FaCar
 } from "react-icons/fa";
 
-
+import { useState } from "react";
+import API from "../api/axios";
 const Contact = () => {
 
 
-  const handleSubmit = (e)=>{
+ const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  mobile: "",
+  subject: "",
+  
+  message: "",
+});
 
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    alert("Message Sent Successfully!");
+  try {
+    const res = await API.post("/contact", formData);
 
-  };
+    alert(res.data.message);
 
+    // Form Clear
+    setFormData({
+      name: "",
+      email: "",
+      mobile: "",
+      subject: "",
+      message: "",
+    });
 
+  } catch (error) {
+    alert(
+      error.response?.data?.message || "Something went wrong!"
+    );
+  }
+};
 
 
 
@@ -476,87 +500,73 @@ const Contact = () => {
 
 
 
-            <input
+      <input
+  type="text"
+  placeholder="Full Name"
+  value={formData.name}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      name: e.target.value,
+    })
+  }
+  className="w-full border rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
+          <input
+  type="email"
+  placeholder="Email Address"
+  value={formData.email}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      email: e.target.value,
+    })
+  }
+  className="w-full border rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
+<input
+  type="text"
+  placeholder="Subject"
+  value={formData.subject}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      subject: e.target.value,
+    })
+  }
+  className="w-full border rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
 
-            type="text"
+      <input
+  type="text"
+  placeholder="Phone Number"
+  value={formData.mobile}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      mobile: e.target.value,
+    })
+  }
+  className="w-full border rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
 
-            placeholder="Full Name"
-
-            className="
-            w-full
-            border
-            rounded-xl
-            px-5
-            py-3
-            outline-none
-            focus:ring-2
-            focus:ring-blue-500
-            "
-
-            />
-            <input
-
-            type="email"
-
-            placeholder="Email Address"
-
-            className="
-            w-full
-            border
-            rounded-xl
-            px-5
-            py-3
-            outline-none
-            focus:ring-2
-            focus:ring-blue-500
-            "
-
-            />
-
-            <input
-
-            type="text"
-
-            placeholder="Phone Number"
-
-            className="
-            w-full
-            border
-            rounded-xl
-            px-5
-            py-3
-            outline-none
-            focus:ring-2
-            focus:ring-blue-500
-            "
-
-            />
-
-
-
-
-
-
-
-
-            <textarea
-
-            rows="5"
-
-            placeholder="Your Message"
-
-            className="
-            w-full
-            border
-            rounded-xl
-            px-5
-            py-3
-            outline-none
-            focus:ring-2
-            focus:ring-blue-500
-            "
-
-            ></textarea>
+         <textarea
+  rows="5"
+  placeholder="Your Message"
+  value={formData.message}
+  onChange={(e) =>
+    setFormData({
+      ...formData,
+      message: e.target.value,
+    })
+  }
+  className="w-full border rounded-xl px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500"
+  required
+/>
 
 
 
@@ -564,27 +574,12 @@ const Contact = () => {
 
 
 
-            <button
-
-            className="
-            w-full
-            bg-gradient-to-r
-            from-blue-600
-            to-indigo-600
-            text-white
-            py-3
-            rounded-xl
-            font-bold
-            hover:scale-[1.02]
-            transition
-            "
-
-            >
-
-              Send Message
-
-            </button>
-
+          <button
+  type="submit"
+  className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-xl font-bold hover:scale-[1.02] transition"
+>
+  Send Message
+</button>
 
 
 

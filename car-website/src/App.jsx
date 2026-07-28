@@ -19,6 +19,8 @@ import AddCar from "./admin/AddCar";
 import ViewCars from "./admin/ViewCars";
 import EditCar from "./admin/Edit";
 import SellRequests from "./admin/SellRequests";
+import Inquiries from "./admin/Inquiries";
+import Notification from "./pages/Notification";
 function App() {
   const location = useLocation();
 
@@ -46,8 +48,14 @@ const isAdminPage =
         <Route path="/about" element={<About />} />
 
         <Route path="/contact" element={<Contact />} />
-
-
+<Route
+path="/admin/inquiries"
+element={<Inquiries/>}
+/>
+<Route
+path="/notifications"
+element={<Notification />}
+/>
         <Route path="/admin/login" element={<Login />} />
 
         <Route path="/admin/register" element={<Register />} />

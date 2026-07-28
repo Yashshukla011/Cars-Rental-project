@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import API from "../api/axios";
+
+import { FaBell } from "react-icons/fa";
+
 import {
   FaUserCircle,
   FaCar,
@@ -12,11 +15,13 @@ import {
 const UserDashboard = () => {
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
-
+const [notifications, setNotifications] = useState([]);
   useEffect(() => {
     fetchMyCars();
-  }, []);
+      fetchNotifications();
 
+  }, []);
+const notificationCount = notifications.length;
   const fetchMyCars = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -34,7 +39,19 @@ const UserDashboard = () => {
       setLoading(false);
     }
   };
+const fetchNotifications = async () => {
+  try {
 
+    const res = await API.get("/notifications");
+
+    setNotifications(res.data.data);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+};
   const pending = cars.filter(
     (car) => car.status === "Pending"
   ).length;
@@ -55,7 +72,7 @@ const UserDashboard = () => {
         <div className="bg-white rounded-xl shadow-lg p-8 flex justify-between items-center">
 
           <div>
-
+            
             <h1 className="text-4xl font-bold">
               Welcome User 👋
             </h1>
@@ -65,7 +82,22 @@ const UserDashboard = () => {
             </p>
 
           </div>
+       <Link
+  to="/notifications"
+  className="relative bg-blue-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 ml-90"
+>
+  <FaBell />
 
+  Notifications
+
+  {notificationCount > 0 && (
+    <span
+      className="absolute -top-2 -right-2 bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs"
+    >
+      {notificationCount}
+    </span>
+  )}
+</Link>
           <FaUserCircle
             className="text-blue-600"
             size={70}

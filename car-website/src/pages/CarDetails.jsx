@@ -16,7 +16,14 @@ const CarDetails = () => {
   const { id } = useParams();
 
   const [car, setCar] = useState(null);
+const [showInquiry, setShowInquiry] = useState(false);
 
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+});
 
   useEffect(() => {
     fetchCar();
@@ -40,7 +47,53 @@ const CarDetails = () => {
   };
 
 
+const handleChange = (e) => {
 
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+
+};
+const submitInquiry = async (e) => {
+
+  e.preventDefault();
+
+  try {
+
+    const res = await API.post("/inquiries", {
+
+      ...formData,
+
+      car: id,
+
+    });
+
+
+    alert("Inquiry Sent Successfully");
+
+
+    setShowInquiry(false);
+
+
+    setFormData({
+      name:"",
+      email:"",
+      phone:"",
+      message:"",
+    });
+
+
+  } catch(error){
+
+    alert(
+      error.response?.data?.message ||
+      "Something went wrong"
+    );
+
+  }
+
+};
   if (!car) {
 
     return (
@@ -327,24 +380,201 @@ const CarDetails = () => {
 
 
 
-            <Link
-              to="/contact"
-              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold flex items-center gap-2"
-            >
-
-              <FaPhone/>
-
-              Contact Seller
-
-
-            </Link>
-
+         <button
+  onClick={() => setShowInquiry(true)}
+  className="bg-white text-blue-600 px-6 py-3 rounded-lg font-bold flex items-center gap-2"
+>
+  <FaPhone/>
+  Contact Seller
+</button>
 
 
 
           </div>
 
+{
+showInquiry && (
 
+<div className="
+fixed inset-0 
+bg-black/50 
+flex 
+items-center 
+justify-center
+z-50
+">
+
+
+<div className="
+bg-white
+w-[90%]
+max-w-md
+rounded-xl
+p-6
+shadow-xl
+">
+
+
+<h2 className="
+text-2xl 
+font-bold 
+mb-5
+">
+Contact Seller
+</h2>
+
+
+
+<form onSubmit={submitInquiry}>
+
+
+<input
+
+type="text"
+
+name="name"
+
+placeholder="Your Name"
+
+value={formData.name}
+
+onChange={handleChange}
+
+className="
+w-full
+border
+p-3
+rounded-lg
+mb-3
+"
+
+/>
+
+
+
+<input
+
+type="email"
+
+name="email"
+
+placeholder="Email"
+
+value={formData.email}
+
+onChange={handleChange}
+
+className="
+w-full
+border
+p-3
+rounded-lg
+mb-3
+"
+
+/>
+
+
+
+<input
+
+type="text"
+
+name="phone"
+
+placeholder="Phone Number"
+
+value={formData.phone}
+
+onChange={handleChange}
+
+className="
+w-full
+border
+p-3
+rounded-lg
+mb-3
+"
+
+/>
+
+
+
+<textarea
+
+name="message"
+
+placeholder="Your Message"
+
+value={formData.message}
+
+onChange={handleChange}
+
+rows="4"
+
+className="
+w-full
+border
+p-3
+rounded-lg
+mb-3
+"
+
+/>
+
+
+
+<button
+
+className="
+bg-blue-600
+text-white
+w-full
+py-3
+rounded-lg
+font-bold
+"
+
+>
+
+Send Inquiry
+
+</button>
+
+
+
+<button
+
+type="button"
+
+onClick={()=>setShowInquiry(false)}
+
+className="
+mt-3
+w-full
+bg-gray-200
+py-3
+rounded-lg
+"
+
+>
+
+Cancel
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+)
+}
 
         </div>
 

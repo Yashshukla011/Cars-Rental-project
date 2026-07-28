@@ -188,7 +188,7 @@ const Home = () => {
 
             <Link
 
-              to="/contact"
+              to="/sell-car"
 
               className="
               bg-white
@@ -579,17 +579,6 @@ const Home = () => {
 
 
       </section>
-
-
-
-
-
-
-
-
-
-
-
 
       {/* CTA SECTION */}
 
