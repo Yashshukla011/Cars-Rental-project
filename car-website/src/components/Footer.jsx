@@ -49,17 +49,23 @@ function Footer() {
      <div className="flex flex-col space-y-3 text-gray-300 ml-15">
   <a href="#" className="flex items-center gap-2 hover:text-blue-400">
     <FaFacebook className="text-xl" />
-    <span>Facebook</span>
+    <Link to="https://www.facebook.co" target="_blank" rel="noopener noreferrer">
+      <span>Facebook</span>
+    </Link>
   </a>
 
   <a href="#" className="flex items-center gap-2 hover:text-pink-400">
     <FaInstagram className="text-xl" />
-    <span>Instagram</span>
+    <Link to="https://www.instagram.co" target="_blank" rel="noopener noreferrer">
+      <span>Instagram</span>
+    </Link>
   </a>
 
   <a href="#" className="flex items-center gap-2 hover:text-sky-400">
     <FaLinkedin className="text-xl" />
-    <span>LinkedIn</span>
+    <Link to="https://www.linkedin.co" target="_blank" rel="noopener noreferrer">
+      <span>LinkedIn</span>
+    </Link>
   </a>
 </div>
           </div>
@@ -69,7 +75,7 @@ function Footer() {
       </div>
 
       <div className="border-t border-gray-700 py-5 text-center text-gray-400">
-        © 2026 Car Rental. All Rights Reserved.
+        © 2026 AutoDrive. All Rights Reserved.
       </div>
     </footer>
   );

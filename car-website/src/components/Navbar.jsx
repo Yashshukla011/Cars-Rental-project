@@ -49,57 +49,101 @@ const logout = () => {
 
         {/* Desktop Menu */}
 
-        <ul className="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+     <ul className="hidden lg:flex items-center gap-8 font-medium text-gray-700">
 
-          <li>
-            <Link to="/" className="hover:text-blue-600 duration-300">
-              Home
-            </Link>
-          </li>
+  {role === "admin" ? (
+    <>
+    
+      <li>
+        <Link
+          to="/"
+          className="hover:text-blue-600 duration-300"
+        >
+          Home      </Link>
+      </li>
+      <li>
+        <Link
+          to="/admin/dashboard"
+          className="hover:text-blue-600 duration-300"
+        >
+         Admin Dashboard
+        </Link>
+      </li>
 
-          <li>
-            <Link to="/cars" className="hover:text-blue-600 duration-300">
-              Buy Car
-            </Link>
-          </li>
 
-          <li>
-            <Link to="/sell-car" className="hover:text-blue-600 duration-300">
-              Sell Car
-            </Link>
-          </li>
+      <li>
+        <Link
+          to="/admin/inquiries"
+          className="hover:text-blue-600 duration-300"
+        >
+          Inquiries
+        </Link>
+      </li>
 
-          <li>
-            <Link to="/about" className="hover:text-blue-600 duration-300">
-              About
-            </Link>
-          </li>
+      <li>
+        <Link
+          to="/admin/sell-requests"
+          className="hover:text-blue-600 duration-300"
+        >
+          Sell Requests
+        </Link>
+      </li>
 
-          <li>
-            <Link to="/contact" className="hover:text-blue-600 duration-300">
-              Contact
-            </Link>
-          </li>
+      <li>
+        <Link
+          to="/admin/add-car"
+          className="hover:text-blue-600 duration-300"
+        >
+          Add Car
+        </Link>
+      </li>
+    </>
+  ) : (
+    <>
+      <li>
+        <Link to="/" className="hover:text-blue-600 duration-300">
+          Home
+        </Link>
+      </li>
 
-       {isLogin && role === "admin" && (
-  <li>
-    <Link
-      to="/admin/dashboard"
-      className="text-yellow-600 font-semibold hover:text-yellow-500"
-    >
-      Dashboard
-    </Link>
-  </li>
-)}
-{isLogin && role === "user" && (
-  <Link
-    to="/user/dashboard"
-    className="text-green-600 font-semibold hover:text-green-500"
-  >
-    My Dashboard
-  </Link>
-)}
-        </ul>
+      <li>
+        <Link to="/cars" className="hover:text-blue-600 duration-300">
+          Buy Car
+        </Link>
+      </li>
+
+      <li>
+        <Link to="/sell-car" className="hover:text-blue-600 duration-300">
+          Sell Car
+        </Link>
+      </li>
+
+      <li>
+        <Link to="/about" className="hover:text-blue-600 duration-300">
+          About
+        </Link>
+      </li>
+
+      <li>
+        <Link to="/contact" className="hover:text-blue-600 duration-300">
+          Contact
+        </Link>
+      </li>
+
+      {isLogin && role === "user" && (
+        <li>
+          <Link
+            to="/user/dashboard"
+            className="text-green-600 font-semibold"
+          >
+            My Dashboard
+          </Link>
+        </li>
+      )}
+    </>
+  )}
+
+</ul>
 
         {/* Right Side */}
 
