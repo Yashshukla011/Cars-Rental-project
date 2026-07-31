@@ -20,6 +20,15 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/notifications",notificationRoutes);
 app.use("/api/contact", contactRoutes);
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://cars-rental-project-9bip-20uis2tzw-yashshukla011s-projects.vercel.app/"
+    ],
+    credentials: true,
+  })
+);
 app.get("/", (req, res) => {
     res.send("Car Selling API Running Successfully");
 });
