@@ -12,7 +12,7 @@ import About from "./pages/about";
 import Contact from "./pages/Contact";
 import SellCar from "./pages/sellcar";
 // Admin Pages
-import Login from "./admin/Login";
+import Login from "./admin/login";
 import Register from "./admin/Register";
 import Dashboard from "./admin/Dashboard";
 import AddCar from "./admin/AddCar";
