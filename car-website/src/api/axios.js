@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://cars-rental-project.onrender.com",
+  baseURL: "https://cars-rental-project.onrender.com/api",
 });
-API.interceptors.request.use((req) => {
 
+API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
 
   if (token) {
@@ -13,4 +13,5 @@ API.interceptors.request.use((req) => {
 
   return req;
 });
+
 export default API;
