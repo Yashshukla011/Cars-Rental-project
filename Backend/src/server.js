@@ -23,9 +23,11 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://cars-rental-project-9bip-20uis2tzw-yashshukla011s-projects.vercel.app",
+      "https://cars-rental-project-9bip-cvqalejhk-yashshukla011s-projects.vercel.app",
     ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
