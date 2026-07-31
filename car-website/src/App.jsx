@@ -23,7 +23,7 @@ import Inquiries from "./admin/Inquiries";
 import Notification from "./pages/Notification";
 function App() {
   const location = useLocation();
-
+//kuch bhi
   // Hide Navbar/Footer on admin pages
 const isAdminPage =
   location.pathname.startsWith("/admin/dashboard") ||
