@@ -1,4 +1,4 @@
-import Inquiry from "../models/inquirymodel.js";
+import Inquiry from "../Models/inquirymodel.js";
 import Notification from "../Models/Notification.model.js";
 
 // User submit inquiry
