@@ -54,7 +54,7 @@ const EditCar = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-gray-800 shadow-lg p-8 rounded-lg">
+    <div className="max-w-3xl mx-auto mt-10 bg-white shadow-lg p-8 rounded-lg">
 
       <h1 className="text-3xl font-bold text-center mb-8">
         Edit Car
